@@ -5,7 +5,7 @@ import StateContext from "./context";
 
 
 const State = (props) => {
-  const host = "https://blogs-backend-api.vercel.app";
+  const host = import.meta.env.VITE_API_BASE_URL;
   const [blog, setBlogs] = useState([])
   const [article, setArticle] = useState(null)
   const fetchBlogs = async() => {

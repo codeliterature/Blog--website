@@ -14,7 +14,7 @@ const BlogPage = () => {
   const { getBlog, article } = useContext(StateContext);
 
   useEffect(() => {
-   return () => getBlog(id);
+   getBlog(id);
   }, []);
 
   let arr = [];

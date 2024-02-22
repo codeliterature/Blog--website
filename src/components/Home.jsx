@@ -6,7 +6,7 @@ import Skeleton from './Skeleton';
 const Home = () => {
   const {fetchBlogs, blog} = useContext(StateContext);
   useEffect(()=>{
-  return () => fetchBlogs()
+   fetchBlogs()
   },[]);
  
   return (
