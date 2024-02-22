@@ -5,10 +5,11 @@ import StateContext from "./context";
 
 
 const State = (props) => {
+  const host = process.env['HOST'];
   const [blog, setBlogs] = useState([])
   const [article, setArticle] = useState(null)
   const fetchBlogs = async() => {
-    const res = await axios.get("https://blogs-backend-api.vercel.app/api/blog/fetchallblogs");
+    const res = await axios.get(`${host}/api/blog/fetchallblogs`);
     setBlogs(res.data)
   }
 
@@ -16,7 +17,7 @@ const State = (props) => {
     const headers = {
       "Content-Type": "aaplication/json"
     }
-    const res = await axios.post("https://blogs-backend-api.vercel.app/api/auth/register",body, {headers});
+    const res = await axios.post(`${host}/api/auth/register`,body, {headers});
     console.log(res.data);
     localStorage.setItem("token", res.data)
   }
@@ -24,14 +25,14 @@ const State = (props) => {
     const headers = {
       "Content-Type": "aaplication/json"
     }
-    const res = await axios.post("https://blogs-backend-api.vercel.app/api/auth/login",body, {headers});
+    const res = await axios.post(`${host}/api/auth/login`,body, {headers});
     console.log(res.data);
     localStorage.setItem("token", res.data)
   }
 
   const getBlog = async(id) => {
     
-    const res = await axios.get(`https://blogs-backend-api.vercel.app/api/blog/blogs/${id}`);
+    const res = await axios.get(`${host}/api/blog/blogs/${id}`);
      setArticle(res.data.blog)
   }
   
